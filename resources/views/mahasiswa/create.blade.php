@@ -1,29 +1,34 @@
 @extends('layouts.main')
 
-@section('title', 'Tambah Mahasiswa')
+@section('title', 'Tambah Mahasiswa - Akademik TI')
 
 @section('content')
+<div class="container py-4">
 
-<div class="container mt-4">
-
-    <div class="card shadow">
+    {{-- Form Card --}}
+    <div class="card card-premium shadow border-0" style="max-width: 800px; margin: 0 auto;">
         
-        <div class="card-header bg-primary text-white">
-            <h4>Form Tambah Mahasiswa</h4>
+        <div class="card-premium-header bg-primary">
+            <h4 class="fw-bold m-0">Form Tambah Mahasiswa</h4>
         </div>
 
-        <div class="card-body">
+        <div class="card-body p-4 bg-white">
 
             <form action="{{ route('mahasiswa.store') }}" method="POST">
                 @csrf
 
+                {{-- Validation Error Alert --}}
                 @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul class="mb-0">
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
+                    <div class="alert alert-danger d-flex align-items-center gap-2 mb-4" role="alert">
+                        <i class="bi bi-exclamation-triangle-fill fs-5"></i>
+                        <div>
+                            <strong class="d-block mb-1">Terjadi kesalahan input:</strong>
+                            <ul class="mb-0 fs-8 ps-3">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
                     </div>
                 @endif
 
@@ -32,19 +37,25 @@
                     <label class="form-label">NIM</label>
                     <input type="text" 
                            name="nim" 
-                           class="form-control"
+                           class="form-control @error('nim') is-invalid @enderror"
                            value="{{ old('nim') }}"
-                           placeholder="Masukkan NIM">
+                           required>
+                    @error('nim')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
 
-                {{-- Nama --}}
+                {{-- Nama Lengkap --}}
                 <div class="mb-3">
                     <label class="form-label">Nama Lengkap</label>
                     <input type="text" 
                            name="nama_lengkap" 
-                           class="form-control"
+                           class="form-control @error('nama_lengkap') is-invalid @enderror"
                            value="{{ old('nama_lengkap') }}"
-                           placeholder="Masukkan Nama">
+                           required>
+                    @error('nama_lengkap')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
 
                 {{-- Tempat Lahir --}}
@@ -52,77 +63,25 @@
                     <label class="form-label">Tempat Lahir</label>
                     <input type="text" 
                            name="tempat_lahir" 
-                           class="form-control"
+                           class="form-control @error('tempat_lahir') is-invalid @enderror"
                            value="{{ old('tempat_lahir') }}"
-                           placeholder="Masukkan Tempat Lahir">
+                           required>
+                    @error('tempat_lahir')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
 
                 {{-- Tanggal Lahir --}}
                 <div class="mb-3">
                     <label class="form-label">Tanggal Lahir</label>
-
-                    <div class="row">
-
-                        {{-- Tanggal --}}
-                        <div class="col-md-4">
-                            <select name="tanggal" class="form-select">
-                                <option value="">Tanggal</option>
-
-                                @for ($i = 1; $i <= 31; $i++)
-                                    <option value="{{ $i }}" {{ old('tanggal') == $i ? 'selected' : '' }}>
-                                        {{ $i }}
-                                    </option>
-                                @endfor
-
-                            </select>
-                        </div>
-
-                        {{-- Bulan --}}
-                        <div class="col-md-4">
-                            <select name="bulan" class="form-select">
-                                <option value="">Bulan</option>
-
-                                @php
-                                    $bulan = [
-                                        'Januari',
-                                        'Februari',
-                                        'Maret',
-                                        'April',
-                                        'Mei',
-                                        'Juni',
-                                        'Juli',
-                                        'Agustus',
-                                        'September',
-                                        'Oktober',
-                                        'November',
-                                        'Desember'
-                                    ];
-                                @endphp
-
-                                @foreach ($bulan as $key => $value)
-                                    <option value="{{ $key + 1 }}" {{ old('bulan') == $key + 1 ? 'selected' : '' }}>
-                                        {{ $value }}
-                                    </option>
-                                @endforeach
-
-                            </select>
-                        </div>
-
-                        {{-- Tahun --}}
-                        <div class="col-md-4">
-                            <select name="tahun" class="form-select">
-                                <option value="">Tahun</option>
-
-                                @for ($i = date('Y'); $i >= 1900; $i--)
-                                    <option value="{{ $i }}" {{ old('tahun') == $i ? 'selected' : '' }}>
-                                        {{ $i }}
-                                    </option>
-                                @endfor
-
-                            </select>
-                        </div>
-
-                    </div>
+                    <input type="date" 
+                           name="tgl_lahir" 
+                           class="form-control @error('tgl_lahir') is-invalid @enderror"
+                           value="{{ old('tgl_lahir') }}"
+                           required>
+                    @error('tgl_lahir')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
 
                 {{-- Email --}}
@@ -130,42 +89,50 @@
                     <label class="form-label">Email</label>
                     <input type="email" 
                            name="email" 
-                           class="form-control"
-                           placeholder="Masukkan Email">
+                           class="form-control @error('email') is-invalid @enderror"
+                           value="{{ old('email') }}"
+                           required>
+                    @error('email')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
 
-                {{-- Prodi --}}
+                {{-- Program Studi --}}
                 <div class="mb-3">
                     <label class="form-label">Program Studi</label>
-
-                    <select name="prodi" class="form-select">
-                        <option value="">-- Pilih Prodi --</option>
+                    <select name="prodi" class="form-select @error('prodi') is-invalid @enderror" required>
+                        <option value="">-- Pilih Program Studi --</option>
                         <option value="TRPL" {{ old('prodi') == 'TRPL' ? 'selected' : '' }}>TRPL</option>
                         <option value="MI" {{ old('prodi') == 'MI' ? 'selected' : '' }}>MI</option>
                         <option value="TK" {{ old('prodi') == 'TK' ? 'selected' : '' }}>TK</option>
                         <option value="TEKKOM" {{ old('prodi') == 'TEKKOM' ? 'selected' : '' }}>TEKKOM</option>
                     </select>
+                    @error('prodi')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
 
                 {{-- Alamat --}}
                 <div class="mb-3">
                     <label class="form-label">Alamat</label>
-
                     <textarea name="alamat"
-                              rows="4"
-                              class="form-control"
-                              placeholder="Masukkan Alamat">{{ old('alamat') }}</textarea>
+                              rows="3"
+                              class="form-control @error('alamat') is-invalid @enderror"
+                              required>{{ old('alamat') }}</textarea>
+                    @error('alamat')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
 
-                {{-- Tombol --}}
-                <button type="submit" class="btn btn-primary">
-                    Simpan
-                </button>
-
-                <a href="{{ route('mahasiswa.index') }}"
-                   class="btn btn-secondary">
-                    Kembali
-                </a>
+                {{-- Action Buttons on the Left --}}
+                <div class="d-flex gap-2 mt-4 pt-3 border-top">
+                    <button type="submit" class="btn btn-primary px-4 py-2">
+                        Simpan
+                    </button>
+                    <a href="{{ route('mahasiswa.index') }}" class="btn btn-secondary px-4 py-2">
+                        Kembali
+                    </a>
+                </div>
 
             </form>
 
@@ -173,5 +140,4 @@
     </div>
 
 </div>
-
 @endsection

@@ -62,7 +62,7 @@ class DosenController extends Controller
             'nik' => 'required|unique:dosens,nik,'. $dosen->id . '|max:15',
             'nama' => 'required|string|max:255',
             'email' => 'required|email|unique:dosens,email,' .$dosen->id,
-            'notelp' => 'requiredr',
+            'notelp' => 'required',
             'prodi' => 'required|string',
             'alamat' => 'required|string',
         ]);

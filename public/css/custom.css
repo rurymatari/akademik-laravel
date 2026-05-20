@@ -1,0 +1,383 @@
+/* 
+ * Simple & Clean Theme for Sistem Informasi Akademik
+ * Optimized for Flat Solids & Classic Layouts
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --primary-color: #0d6efd;       /* Standard Bootstrap Blue */
+    --primary-hover: #0b5ed7;
+    --success-color: #198754;       /* Standard Bootstrap Green */
+    --success-hover: #157347;
+    --secondary-color: #6c757d;     /* Standard Bootstrap Gray */
+    --secondary-hover: #5c636a;
+    --danger-color: #dc3545;        /* Standard Bootstrap Red */
+    --danger-hover: #bb2d3b;
+    --warning-color: #ffc107;       /* Standard Bootstrap Yellow */
+    --warning-hover: #fd7e14;
+    --bg-color: #f8fafc;
+    --card-bg: #ffffff;
+    --text-main: #212529;
+    --text-muted: #6c757d;
+    --border-color: #dee2e6;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+}
+
+h1, h2, h3, h4, h5, h6, .navbar-brand {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+}
+
+/* Minimalist Navbar */
+.navbar-custom {
+    background-color: #0f172a !important; /* Solid dark slate */
+    border-bottom: 1px solid #1e293b;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.navbar-custom .navbar-brand {
+    font-weight: 800;
+    font-size: 1.25rem;
+    color: #ffffff !important;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.navbar-custom .navbar-brand span span {
+    color: #94a3b8 !important;
+}
+
+.navbar-custom .nav-link {
+    color: #94a3b8 !important;
+    font-weight: 500;
+    padding: 0.5rem 1rem !important;
+    border-radius: 0.25rem;
+    transition: all 0.15s ease;
+}
+
+.navbar-custom .nav-link:hover {
+    color: #ffffff !important;
+    background-color: #1e293b;
+}
+
+.navbar-custom .nav-link.active {
+    color: #ffffff !important;
+    font-weight: 600;
+    background-color: var(--primary-color) !important;
+}
+
+/* Main Container Padding */
+main {
+    margin-top: 90px;
+    margin-bottom: 50px;
+    min-height: calc(100vh - 180px);
+}
+
+/* Simple Card Design */
+.card-premium {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 0.375rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+/* Solid Colored Headers - Simulating the Blue/Green headers */
+.card-premium-header {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    padding: 1rem 1.5rem;
+    border-bottom: none;
+    font-weight: 700;
+}
+
+.card-premium-header h4, .card-premium-header h2 {
+    color: #ffffff !important;
+    margin: 0;
+    font-size: 1.15rem;
+}
+
+/* Dosen Form Card Header green theme */
+.card-premium-header.bg-dosen {
+    background-color: var(--success-color);
+}
+
+/* Stat Card - Flat simple style */
+.stat-card {
+    border-radius: 0.375rem;
+    border: 1px solid var(--border-color);
+    background: #ffffff;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.stat-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 0.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    background-color: #f1f5f9;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+/* Tables styling */
+.table-responsive {
+    border-radius: 0.375rem;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+.table-custom {
+    margin-bottom: 0;
+}
+
+.table-custom thead {
+    background-color: #f8fafc;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.table-custom thead th {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.725rem;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    padding: 0.75rem 1.25rem;
+    border: none;
+}
+
+.table-custom tbody tr {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.table-custom tbody tr:last-child {
+    border-bottom: none;
+}
+
+.table-custom tbody tr:hover {
+    background-color: #f8fafc !important;
+}
+
+.table-custom tbody td {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.875rem;
+    color: var(--text-main);
+    border: none;
+}
+
+/* Badges styling */
+.badge-custom {
+    padding: 0.3em 0.5em;
+    font-weight: 600;
+    border-radius: 0.25rem;
+    font-size: 0.7rem;
+}
+
+.badge-prodi-trpl {
+    background-color: rgba(13, 110, 253, 0.08);
+    color: var(--primary-color);
+    border: 1px solid rgba(13, 110, 253, 0.15);
+}
+
+.badge-prodi-mi {
+    background-color: rgba(25, 135, 84, 0.08);
+    color: var(--success-color);
+    border: 1px solid rgba(25, 135, 84, 0.15);
+}
+
+.badge-prodi-tk {
+    background-color: rgba(255, 193, 7, 0.08);
+    color: #b58200;
+    border: 1px solid rgba(255, 193, 7, 0.2);
+}
+
+.badge-prodi-tekkom {
+    background-color: rgba(111, 66, 193, 0.08);
+    color: #6f42c1;
+    border: 1px solid rgba(111, 66, 193, 0.15);
+}
+
+/* Simple Action Buttons matching the image */
+.btn-action {
+    width: 28px;
+    height: 28px;
+    border-radius: 0.25rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: all 0.15s ease;
+    border: 1px solid var(--border-color);
+    background-color: #ffffff;
+    color: #495057;
+}
+
+.btn-action:hover {
+    background-color: #f8fafc;
+    color: var(--text-main);
+}
+
+.btn-action-show:hover {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-action-edit:hover {
+    color: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+.btn-action-delete:hover {
+    color: var(--danger-color);
+    border-color: var(--danger-color);
+}
+
+/* Simple flat buttons */
+.btn {
+    border-radius: 0.25rem !important; /* Flat design */
+    font-weight: 500;
+    padding: 0.4rem 1rem;
+    font-size: 0.9rem;
+}
+
+.btn-primary {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover) !important;
+    border-color: var(--primary-hover) !important;
+}
+
+.btn-success {
+    background-color: var(--success-color) !important;
+    border-color: var(--success-color) !important;
+}
+
+.btn-success:hover {
+    background-color: var(--success-hover) !important;
+    border-color: var(--success-hover) !important;
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color) !important;
+    border-color: var(--secondary-color) !important;
+}
+
+.btn-secondary:hover {
+    background-color: var(--secondary-hover) !important;
+    border-color: var(--secondary-hover) !important;
+}
+
+.btn-danger {
+    background-color: var(--danger-color) !important;
+    border-color: var(--danger-color) !important;
+}
+
+.btn-danger:hover {
+    background-color: var(--danger-hover) !important;
+    border-color: var(--danger-hover) !important;
+}
+
+/* Simple form label styling */
+.form-label {
+    font-weight: 500;
+    font-size: 0.85rem;
+    color: #212529;
+    margin-bottom: 0.35rem;
+}
+
+.form-control, .form-select {
+    padding: 0.45rem 0.75rem;
+    border-radius: 0.25rem;
+    border: 1px solid #ced4da;
+    font-size: 0.875rem;
+    background-color: #ffffff;
+    color: var(--text-main);
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #86b7fe;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.form-control-readonly {
+    background-color: #e9ecef !important;
+    border-color: #ced4da !important;
+    color: #495057 !important;
+}
+
+/* Simple Hero Section */
+.hero-premium {
+    background-color: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: 0.375rem;
+    padding: 2.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.hero-premium h1 {
+    color: var(--text-main);
+    font-weight: 700;
+}
+
+/* Simple Footer styling */
+.footer-custom {
+    background-color: #ffffff;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border-color);
+    padding: 1rem 0;
+}
+
+/* Custom Overrides for Rounded Pill Buttons & Table Layouts */
+.rounded-pill-custom {
+    border-radius: 50rem !important;
+}
+
+.table-card-custom {
+    border-radius: 1.5rem !important;
+    border: none !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important;
+    background-color: #ffffff !important;
+}
+
+.table-card-custom .table-responsive {
+    border: none !important;
+    border-radius: 1.5rem !important;
+}
+
+.table-card-custom thead th {
+    background-color: transparent !important;
+    border-bottom: 1px solid #dee2e6 !important;
+    font-size: 0.9rem !important;
+    font-weight: 700 !important;
+    color: #212529 !important;
+    text-transform: none !important;
+    letter-spacing: normal !important;
+    padding: 1.25rem 1rem !important;
+}
+
+.table-card-custom tbody td {
+    border-bottom: 1px solid #dee2e6 !important;
+    font-size: 0.9rem !important;
+    color: #495057 !important;
+    padding: 1.25rem 1rem !important;
+}
+
+.table-card-custom tbody tr:last-child td {
+    border-bottom: none !important;
+}
+

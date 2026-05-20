@@ -31,16 +31,11 @@ class MahasiswaController extends Controller
             'nim' => 'required|unique:mahasiswas,nim|max:10',
             'nama_lengkap' => 'required|string|max:255',
             'tempat_lahir' => 'required|string|max:255',
-            'tanggal' => 'required|integer|min:1|max:31',
-            'bulan' => 'required|integer|min:1|max:12',
-            'tahun' => 'required|integer|min:1900|max:' . date('Y'),
+            'tgl_lahir' => 'required|date',
             'email' => 'required|email|unique:mahasiswas,email',
             'prodi' => 'required|string|max:50',
             'alamat' => 'required|string',
         ]);
-
-        $validated['tgl_lahir'] = sprintf('%04d-%02d-%02d', $validated['tahun'], $validated['bulan'], $validated['tanggal']);
-        unset($validated['tanggal'], $validated['bulan'], $validated['tahun']);
 
         Mahasiswa::create($validated);
 
@@ -79,16 +74,11 @@ class MahasiswaController extends Controller
             'nim' => 'required|unique:mahasiswas,nim,' . $mahasiswa->id . '|max:10',
             'nama_lengkap' => 'required|string|max:255',
             'tempat_lahir' => 'required|string|max:255',
-            'tanggal' => 'required|integer|min:1|max:31',
-            'bulan' => 'required|integer|min:1|max:12',
-            'tahun' => 'required|integer|min:1900|max:' . date('Y'),
+            'tgl_lahir' => 'required|date',
             'email' => 'required|email|unique:mahasiswas,email,' . $mahasiswa->id,
             'prodi' => 'required|string|max:50',
             'alamat' => 'required|string',
         ]);
-
-        $validated['tgl_lahir'] = sprintf('%04d-%02d-%02d', $validated['tahun'], $validated['bulan'], $validated['tanggal']);
-        unset($validated['tanggal'], $validated['bulan'], $validated['tahun']);
 
         $mahasiswa->update($validated);
 
